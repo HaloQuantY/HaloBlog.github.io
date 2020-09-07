@@ -1,6 +1,8 @@
 ---
   title: Bootstrap笔记(freeCodeCamp)
 ---
+### 内容
+
 - 响应式图片: img-responsive
 
 - 文本居中: text-center
@@ -56,7 +58,7 @@
 ### 总结
   freeCodeCamp上bootstrap章节包含的内容主要是4部分：
   栅格系统
-  对表单元素的处理（form-control和栅格系统结合
+  对表单元素的处理（form-control和栅格系统结合)
   button元素创建
-  图片文本相应格式（响应式图片和文本对齐方式，文本颜色等
+  图片文本相应格式（响应式图片和文本对齐方式，文本颜色等)
   
