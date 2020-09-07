@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="let和const命令基本用法​    let声明变量，const声明常量。 特性 块级作用域。声明变量&#x2F;常量仅在声明语句所在代码块内生效 没有变量提升。 暂时性死区。只要一代码块中有let或const声明的变量，虽然没有变量提升的特性，但从一开始let和const声明的变量就被所处代码块锁死，在声明前使用这些变量会报错。  12345678var tmp &#x3D; 123;if (true) &amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6常用特性总结">
+<meta property="og:url" content="http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="HaloQuant">
+<meta property="og:description" content="let和const命令基本用法​    let声明变量，const声明常量。 特性 块级作用域。声明变量&#x2F;常量仅在声明语句所在代码块内生效 没有变量提升。 暂时性死区。只要一代码块中有let或const声明的变量，虽然没有变量提升的特性，但从一开始let和const声明的变量就被所处代码块锁死，在声明前使用这些变量会报错。  12345678var tmp &#x3D; 123;if (true) &amp;#12">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-07T19:40:06.647Z">
+<meta property="article:modified_time" content="2020-09-07T19:40:06.647Z">
+<meta property="article:author" content="HaloQuanty">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>ES6常用特性总结</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/07/CSS%E5%B8%83%E5%B1%80%E5%92%8C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/07/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&text=ES6常用特性总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&is_video=false&description=ES6常用特性总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6常用特性总结&body=Check out this article: http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&name=ES6常用特性总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&t=ES6常用特性总结"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#let%E5%92%8Cconst%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">let和const命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#let%E5%91%BD%E4%BB%A4%E5%92%8Cfor%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.3.</span> <span class="toc-text">let命令和for语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-number">2.</span> <span class="toc-text">函数扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">箭头函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">特性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">2.2.</span> <span class="toc-text">函数参数默认值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.2.2.</span> <span class="toc-text">参数默认值位置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rest%E5%8F%82%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">rest参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-number">3.</span> <span class="toc-text">数组扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.1.</span> <span class="toc-text">扩展运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-3"><span class="toc-number">3.1.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-3"><span class="toc-number">3.1.2.</span> <span class="toc-text">特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-4"><span class="toc-number">4.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">4.2.</span> <span class="toc-text">默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">4.3.</span> <span class="toc-text">函数参数解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-5"><span class="toc-number">4.3.1.</span> <span class="toc-text">基本用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-number">5.</span> <span class="toc-text">字符串扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">5.1.</span> <span class="toc-text">模板字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-6"><span class="toc-number">5.1.1.</span> <span class="toc-text">基本用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-number">6.</span> <span class="toc-text">对象扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%9A%84%E7%AE%80%E6%B4%81%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text">属性的简洁表示法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-7"><span class="toc-number">6.1.1.</span> <span class="toc-text">基本用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class"><span class="toc-number">7.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">基础用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-4"><span class="toc-number">7.2.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getter%E5%92%8Csetter"><span class="toc-number">7.3.</span> <span class="toc-text">getter和setter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module"><span class="toc-number">8.</span> <span class="toc-text">Module</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAModule-Script"><span class="toc-number">8.1.</span> <span class="toc-text">创建Module Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#export%E5%91%BD%E4%BB%A4"><span class="toc-number">8.2.</span> <span class="toc-text">export命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#import%E5%91%BD%E4%BB%A4"><span class="toc-number">8.3.</span> <span class="toc-text">import命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E6%95%B4%E4%BD%93%E5%8A%A0%E8%BD%BD%EF%BC%88import-as%E8%AF%AD%E5%8F%A5%EF%BC%89"><span class="toc-number">8.4.</span> <span class="toc-text">模块整体加载（import as语句）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#export-default%E8%AF%AD%E5%8F%A5"><span class="toc-number">8.5.</span> <span class="toc-text">export default语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5default-export"><span class="toc-number">8.6.</span> <span class="toc-text">引入default export</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-number">9.</span> <span class="toc-text">Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise%E5%90%AB%E4%B9%89"><span class="toc-number">9.1.</span> <span class="toc-text">Promise含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">9.2.</span> <span class="toc-text">Promise基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#then%E6%96%B9%E6%B3%95"><span class="toc-number">9.2.1.</span> <span class="toc-text">then方法</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ES6常用特性总结
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">HaloQuant</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-07T19:40:06.647Z" itemprop="datePublished">2020-09-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="let和const命令"><a href="#let和const命令" class="headerlink" title="let和const命令"></a>let和const命令</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>​    let声明变量，const声明常量。</p>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>块级作用域。声明变量/常量仅在声明语句所在代码块内生效</li>
+<li>没有变量提升。</li>
+<li>暂时性死区。只要一代码块中有let或const声明的变量，虽然没有变量提升的特性，但从一开始let和const声明的变量就被所处代码块锁死，在声明前使用这些变量会报错。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tmp = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  tmp = <span class="string">&#x27;abc&#x27;</span>; <span class="comment">// ReferenceError</span></span><br><span class="line">  <span class="keyword">let</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 暂时性死区，含有let代码块锁死声明的同名变量</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="let命令和for语句"><a href="#let命令和for语句" class="headerlink" title="let命令和for语句"></a>let命令和for语句</h4><ul>
+<li>循环体内部和设置循环变量部分为两个独立作用域</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// abc</span></span><br><span class="line"><span class="comment">// abc</span></span><br><span class="line"><span class="comment">// abc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 循环体为子作用域</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>let声明变量仅在for循环体内有效</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">6</span>](); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">6</span>](); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="函数扩展"><a href="#函数扩展" class="headerlink" title="函数扩展"></a>函数扩展</h3><h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="function">(<span class="params">a</span>) =&gt;</span> &#123; <span class="keyword">return</span> a &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果函数体部分为return语句可以省略大括号,只有一个参数时也可以省略圆括号</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">a</span> =&gt;</span> a;</span><br></pre></td></tr></table></figure>
+
+<h5 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>绑定this对象。箭头函数中this对象强制绑定为函数定义时所在对象而非使用时所在对象（实际上箭头函数没有this对象，会沿作用域链寻找上级this对象）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;id:&#x27;</span>, <span class="built_in">this</span>.id);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> id = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line">foo.call(&#123; <span class="attr">id</span>: <span class="number">42</span> &#125;);</span><br><span class="line"><span class="comment">// id: 42</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭头函数绑定this对象的特性可以用于绑定setTimeout中this为定义时所在作用域，同样也方便对回调函数中this进行绑定</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不能用作构造函数。使用new命令将报错</li>
+<li>箭头函数没有arguments对象。</li>
+<li>不能使用yield命令。箭头函数无法作为Generrator函数</li>
+</ul>
+<h4 id="函数参数默认值"><a href="#函数参数默认值" class="headerlink" title="函数参数默认值"></a>函数参数默认值</h4><h5 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h5><p>​    直接为函数参数定义一个值即可，如果在写入参数时省略的设定默认值的参数，则会使用默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y = <span class="string">&#x27;World&#x27;</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log(<span class="string">&#x27;Hello&#x27;</span>) <span class="comment">// Hello World</span></span><br><span class="line">log(<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;China&#x27;</span>) <span class="comment">// Hello China</span></span><br><span class="line">log(<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="comment">// Hello</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="参数默认值位置"><a href="#参数默认值位置" class="headerlink" title="参数默认值位置"></a>参数默认值位置</h5><p>​    设定了默认值的参数应该位于参数列表的尾部，否则无法省略此参数以及之后参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x = <span class="number">1</span>, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f() <span class="comment">// [1, undefined]</span></span><br><span class="line">f(<span class="number">2</span>) <span class="comment">// [2, undefined]</span></span><br><span class="line">f(, <span class="number">1</span>) <span class="comment">// 报错</span></span><br><span class="line">f(<span class="literal">undefined</span>, <span class="number">1</span>) <span class="comment">// [1, 1]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h4><h5 id="基本用法-2"><a href="#基本用法-2" class="headerlink" title="基本用法"></a>基本用法</h5><p>​    <code>...values</code>，用于获取函数多余参数。此时values为一个数组，接收函数多余的参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...values</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> val <span class="keyword">of</span> values) &#123;</span><br><span class="line">    sum += val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>) <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="特性-2"><a href="#特性-2" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>rest参数是真正数组，可以使用数组方法。这一点主要是规避以往需要将arguments对象先转换为数组的操作<code>Array.prototype.slice.call</code></li>
+</ul>
+<h3 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h3><h4 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h4><h5 id="基本用法-3"><a href="#基本用法-3" class="headerlink" title="基本用法"></a>基本用法</h5><p>​    扩展运算符为<code>...</code>，可看做rest参数逆运算，将一个数组转为逗号分隔开的参数序列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5中要使用如下方法对数组应用Math.max()方法，因为Math.max()方法接收的是一个参数序列而非数组</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">6</span>, <span class="number">89</span>, <span class="number">3</span>, <span class="number">45</span>];</span><br><span class="line"><span class="keyword">var</span> maximus = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr); <span class="comment">// returns 89</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6中使用扩展运算符则可以方便将数组转换为参数序列</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">6</span>, <span class="number">89</span>, <span class="number">3</span>, <span class="number">45</span>];</span><br><span class="line"><span class="keyword">const</span> maximus = <span class="built_in">Math</span>.max(...arr); <span class="comment">// returns 89</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="特性-3"><a href="#特性-3" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>主要是替换ES5中利用apply方法将数组转为函数参数的操作</li>
+<li>扩展运算符使用相当灵活，通常情况放置在中括号内将其他数据类型转换为数组，以及在函数参数列表中和普通参数连用</li>
+<li>任何具有Iterator接口的对象都可以使用扩展运算符转换为一参数序列，然后将参数序列置于中括号内，转换为真正的数组</li>
+</ul>
+<h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><p>​    解构赋值是ES6中引入，用于从数组和对象中提取值，对变量进行赋值的特殊语法。解构赋值实际上是按照某种模式进行赋值。</p>
+<h4 id="基本用法-4"><a href="#基本用法-4" class="headerlink" title="基本用法"></a>基本用法</h4><p>​    解构赋值主要是从对象和数组中按照模式提取值，同时也可以应用到字符串，数值和布尔值上（字符串转换为类似数组对象，数值和布尔值转换为对象）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对数组进行解构赋值</span></span><br><span class="line"><span class="keyword">let</span> [foo, [[bar], baz]] = [<span class="number">1</span>, [[<span class="number">2</span>], <span class="number">3</span>]];</span><br><span class="line">foo <span class="comment">// 1</span></span><br><span class="line">bar <span class="comment">// 2</span></span><br><span class="line">baz <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [ , , third] = [<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;baz&quot;</span>];</span><br><span class="line">third <span class="comment">// &quot;baz&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不完全解构，模式中变量没有对应值时变量的值为undefined</span></span><br><span class="line"><span class="keyword">let</span> [foo] = [];</span><br><span class="line"><span class="keyword">let</span> [bar, foo] = [<span class="number">1</span>];</span><br><span class="line"><span class="comment">// foo undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对对象进行解构赋值</span></span><br><span class="line"><span class="keyword">let</span> &#123; foo, bar &#125; = &#123; <span class="attr">foo</span>: <span class="string">&#x27;aaa&#x27;</span>, <span class="attr">bar</span>: <span class="string">&#x27;bbb&#x27;</span> &#125;;</span><br><span class="line">foo <span class="comment">// &quot;aaa&quot;</span></span><br><span class="line">bar <span class="comment">// &quot;bbb&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 没有对应属性名的单独变量无法进行解构赋值</span></span><br><span class="line"><span class="keyword">let</span> &#123;foo&#125; = &#123;<span class="attr">bar</span>: <span class="string">&#x27;baz&#x27;</span>&#125;;</span><br><span class="line">foo <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象的解构赋值实际上是将相同属性名的变量进行赋值，只不过单独变量的情况是利用了对象简写属性的特点</span></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">foo</span>: foo, <span class="attr">bar</span>: bar &#125; = &#123; <span class="attr">foo</span>: <span class="string">&#x27;aaa&#x27;</span>, <span class="attr">bar</span>: <span class="string">&#x27;bbb&#x27;</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h4><p>​    对象和数组的解构赋值中都可以在等号左边的模式中，为变量指定默认值。默认值生效的条件是等号右边的数组或对象中，对应值为undefined。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为数组解构赋值指定默认值</span></span><br><span class="line"><span class="keyword">let</span> [foo = <span class="literal">true</span>] = [];</span><br><span class="line">foo <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [x, y = <span class="string">&#x27;b&#x27;</span>] = [<span class="string">&#x27;a&#x27;</span>]; <span class="comment">// x=&#x27;a&#x27;, y=&#x27;b&#x27;</span></span><br><span class="line"><span class="keyword">let</span> [x, y = <span class="string">&#x27;b&#x27;</span>] = [<span class="string">&#x27;a&#x27;</span>, <span class="literal">undefined</span>]; <span class="comment">// x=&#x27;a&#x27;, y=&#x27;b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 为对象解构赋值指定默认值</span></span><br><span class="line"><span class="keyword">var</span> &#123;<span class="attr">x</span>: y = <span class="number">3</span>&#125; = &#123;<span class="attr">x</span>: <span class="number">5</span>&#125;;</span><br><span class="line">y <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123; <span class="attr">message</span>: msg = <span class="string">&#x27;Something went wrong&#x27;</span> &#125; = &#123;&#125;;</span><br><span class="line">msg <span class="comment">// &quot;Something went wrong&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="函数参数解构赋值"><a href="#函数参数解构赋值" class="headerlink" title="函数参数解构赋值"></a>函数参数解构赋值</h4><p>​    对于函数参数的解构赋值，函数的形参是模式，而实参则是目标对象或数组。</p>
+<h5 id="基本用法-5"><a href="#基本用法-5" class="headerlink" title="基本用法"></a>基本用法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">[x, y]</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line">add([<span class="number">1</span>, <span class="number">2</span>]); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">&#123;x = <span class="number">0</span>, y = <span class="number">0</span>&#125; = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line">move(&#123;<span class="attr">x</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="number">8</span>&#125;); <span class="comment">// [3, 8]</span></span><br><span class="line">move(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;); <span class="comment">// [3, 0]</span></span><br><span class="line">move(&#123;&#125;); <span class="comment">// [0, 0]</span></span><br><span class="line">move(); <span class="comment">// [0, 0]</span></span><br><span class="line"></span><br><span class="line">[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]].map(<span class="function">(<span class="params">[a, b]</span>) =&gt;</span> a + b);</span><br><span class="line"><span class="comment">// [ 3, 7 ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h3><h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h4><p>​    模板字符串用于输出模板，在两个反引号``内部填写的内容可以按照格式输出，可用于定义多行字符串或在字符串中嵌入变量。</p>
+<h5 id="基本用法-6"><a href="#基本用法-6" class="headerlink" title="基本用法"></a>基本用法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通字符串</span></span><br><span class="line"><span class="string">`In JavaScript &#x27;\n&#x27; is a line-feed.`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 多行字符串</span></span><br><span class="line"><span class="string">`In JavaScript this is</span></span><br><span class="line"><span class="string"> not legal.`</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`string text line 1</span></span><br><span class="line"><span class="string">string text line 2`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串中嵌入变量</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;Bob&quot;</span>, time = <span class="string">&quot;today&quot;</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h3><h4 id="属性的简洁表示法"><a href="#属性的简洁表示法" class="headerlink" title="属性的简洁表示法"></a>属性的简洁表示法</h4><p>​    ES6允许在对象大括号中直接写入变量和函数，作为对象的属性和方法。</p>
+<h5 id="基本用法-7"><a href="#基本用法-7" class="headerlink" title="基本用法"></a>基本用法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变量直接写在大括号中，属性名就是变量名，属性值就是变量值</span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="string">&#x27;bar&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> baz = &#123;foo&#125;;</span><br><span class="line">baz <span class="comment">// &#123;foo: &quot;bar&quot;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">const</span> baz = &#123;<span class="attr">foo</span>: foo&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法同样可以简写，函数名就是方法名</span></span><br><span class="line"><span class="keyword">const</span> o = &#123;</span><br><span class="line">  method() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello!&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">const</span> o = &#123;</span><br><span class="line">  method: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello!&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><p>​    class关键字在ES6中可以用于定义类，但class关键字本身只是语法糖。</p>
+<h4 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用class关键字对类进行定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(x, y) &#123;</span><br><span class="line">    <span class="built_in">this</span>.x = x;</span><br><span class="line">    <span class="built_in">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;(&#x27;</span> + <span class="built_in">this</span>.x + <span class="string">&#x27;, &#x27;</span> + <span class="built_in">this</span>.y + <span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于ES5中如下写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.x = x;</span><br><span class="line">  <span class="built_in">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Point.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;(&#x27;</span> + <span class="built_in">this</span>.x + <span class="string">&#x27;, &#x27;</span> + <span class="built_in">this</span>.y + <span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="特性-4"><a href="#特性-4" class="headerlink" title="特性"></a>特性</h4><ul>
+<li><p>class语法仅仅是将构造函数的创建进行了替换，并没有完整实现类这一特性</p>
+</li>
+<li><p>class声明的类，在调用时同样使用new关键字，但此时会执行constructor函数</p>
+</li>
+<li><p>class语法声明类后不跟括号，对于创建实例传入的参数由constructor进行接收</p>
+</li>
+<li><p>class中的constructor函数对应于ES5中的构造函数</p>
+</li>
+<li><p>class中的方法对应于ES5中构造函数原型方法</p>
+</li>
+</ul>
+<h4 id="getter和setter"><a href="#getter和setter" class="headerlink" title="getter和setter"></a>getter和setter</h4><p>​    getter函数的seter函数用于控制对象的数据存取行为。</p>
+<p>​    getter函数将会返回对象私有变量的值而非直接返回对象私有变量。</p>
+<p>​    setter函数将会根据setter函数的参数，对对象的私有变量进行值的设置。可能包含计算操作或覆盖操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> <span class="title">prop</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;getter&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">set</span> <span class="title">prop</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setter: &#x27;</span>+value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> inst = <span class="keyword">new</span> MyClass();</span><br><span class="line"></span><br><span class="line">inst.prop = <span class="number">123</span>;</span><br><span class="line"><span class="comment">// setter: 123</span></span><br><span class="line"></span><br><span class="line">inst.prop</span><br><span class="line"><span class="comment">// &#x27;getter&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>​    getter和setter函数都是拦截某属性的存取操作，该属性名对应于getter和setter的方法名。</p>
+<h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3><p>​    Module是用于在各JavaScript文件之中共享代码，这包含了在文件中输出部分代码和在文件中引入需要代码两种操作。</p>
+<p>​    模块的功能主要是两个命令：export和import</p>
+<h4 id="创建Module-Script"><a href="#创建Module-Script" class="headerlink" title="创建Module Script"></a>创建Module Script</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;filename.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​    type为module的脚本中才可以使用import和export功能</p>
+<h4 id="export命令"><a href="#export命令" class="headerlink" title="export命令"></a>export命令</h4><p>​    export命令用于规定模块的对外接口，共享代码块。使用时有两种形式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种直接在变量声明前使用export命令，输出紧跟着的变量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> add = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第二种则是用一个对象输出多个变量</span></span><br><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; add &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>​    export可以输出变量，函数和类。</p>
+<h4 id="import命令"><a href="#import命令" class="headerlink" title="import命令"></a>import命令</h4><p>​    使用了export命令规定了模块的对外接口之后，其他JS模块就可以通过import命令加载这个模块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; add &#125; <span class="keyword">from</span> <span class="string">&#x27;./math_functions.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​    import语句允许选择要加载的接口，以及加载模块的路径。</p>
+<h4 id="模块整体加载（import-as语句）"><a href="#模块整体加载（import-as语句）" class="headerlink" title="模块整体加载（import as语句）"></a>模块整体加载（import as语句）</h4><p>​    在import命令中使用星号<code>*</code>指定一个对象，将所有的输出值都加载在对象上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> myMathModule <span class="keyword">from</span> <span class="string">&quot;./math_functions.js&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="export-default语句"><a href="#export-default语句" class="headerlink" title="export default语句"></a>export default语句</h4><p>​    通常export default语句用于只需要从模块中输出一个值的情况，以及为模块创建备用输出的情况。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// named function</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// anonymous function</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    export default只能够输出一个值，可以是变量或函数，还可以是常量（因为实际上是用export关键字输出了一个名为default的变量）</p>
+<h4 id="引入default-export"><a href="#引入default-export" class="headerlink" title="引入default export"></a>引入default export</h4><p>​    对于普通的import语句和针对export default的import语句，仅有大括号的区别：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> add <span class="keyword">from</span> <span class="string">&quot;./math_functions.js&quot;</span>;</span><br><span class="line"><span class="comment">// 此处add并非源模块中的输出，而是由引入者自己命名的，并且不被大括号包围</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><h4 id="Promise含义"><a href="#Promise含义" class="headerlink" title="Promise含义"></a>Promise含义</h4><p>​    是异步编程的一种解决方案，相比于传统的回调函数和事件两种解决方案而言，Promise更加灵活也更加合理。Promise可以在异步操作完成后指定回调函数，且书写方式更加易于维护，解决了回调函数的回调地狱问题。</p>
+<p>​    Promise有以下特点</p>
+<ul>
+<li>Promise是一个封装了异步操作的容器，在定义Promise实例时其内部的异步操作就已经运行</li>
+<li>Promise有三种状态，分别是pending，fulfilled（resolved）和rejected。代表了异步操作进行中，成功完成和失败完成。</li>
+<li>Promise对象的状态不受外界影响，仅取决于内部异步操作的完成情况。</li>
+<li>Promise对象的状态仅改变一次，不是从pending到fulfilled就是从pending到rejected</li>
+</ul>
+<h4 id="Promise基本使用"><a href="#Promise基本使用" class="headerlink" title="Promise基本使用"></a>Promise基本使用</h4><pre><code>##### Promise实例创建</code></pre>
+<p>​    Promise是一个构造函数，用于生成Promise实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​    在创建Promise实例时，接收一个函数作为参数，该函数体为异步操作，该函数参数为resolve参数和reject参数。resolve和reject函数用于决定Promise的结果，完成promise，如果不调用这两个函数Promise实例将会永远停留在pending状态。</p>
+<p>​    在函数体内调用resolve返回value值则Promise实例状态由pending改为fulfilled，调用reject返回error值则Promise实例由pending状态改为rejected状态。</p>
+<h5 id="then方法"><a href="#then方法" class="headerlink" title="then方法"></a>then方法</h5><p>​    then方法是Promise实例可调用方法，接收两个参数分别为onresolved和onrejected函数，分别用于接收Promise实例中对应resolve和reject函数传递出的数据value和error。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(resolve, ms, <span class="string">&#x27;done&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">timeout(<span class="number">100</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​    then方法返回一个新Promise实例，因此可以采取链式写法（返回的新Promise实例会传入then方法的返回值）</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#let%E5%92%8Cconst%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">let和const命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#let%E5%91%BD%E4%BB%A4%E5%92%8Cfor%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.3.</span> <span class="toc-text">let命令和for语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-number">2.</span> <span class="toc-text">函数扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">箭头函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">特性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">2.2.</span> <span class="toc-text">函数参数默认值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.2.2.</span> <span class="toc-text">参数默认值位置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rest%E5%8F%82%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">rest参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-number">3.</span> <span class="toc-text">数组扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.1.</span> <span class="toc-text">扩展运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-3"><span class="toc-number">3.1.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-3"><span class="toc-number">3.1.2.</span> <span class="toc-text">特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-4"><span class="toc-number">4.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">4.2.</span> <span class="toc-text">默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">4.3.</span> <span class="toc-text">函数参数解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-5"><span class="toc-number">4.3.1.</span> <span class="toc-text">基本用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-number">5.</span> <span class="toc-text">字符串扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">5.1.</span> <span class="toc-text">模板字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-6"><span class="toc-number">5.1.1.</span> <span class="toc-text">基本用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-number">6.</span> <span class="toc-text">对象扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%9A%84%E7%AE%80%E6%B4%81%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text">属性的简洁表示法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-7"><span class="toc-number">6.1.1.</span> <span class="toc-text">基本用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class"><span class="toc-number">7.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">基础用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7-4"><span class="toc-number">7.2.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getter%E5%92%8Csetter"><span class="toc-number">7.3.</span> <span class="toc-text">getter和setter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module"><span class="toc-number">8.</span> <span class="toc-text">Module</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAModule-Script"><span class="toc-number">8.1.</span> <span class="toc-text">创建Module Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#export%E5%91%BD%E4%BB%A4"><span class="toc-number">8.2.</span> <span class="toc-text">export命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#import%E5%91%BD%E4%BB%A4"><span class="toc-number">8.3.</span> <span class="toc-text">import命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E6%95%B4%E4%BD%93%E5%8A%A0%E8%BD%BD%EF%BC%88import-as%E8%AF%AD%E5%8F%A5%EF%BC%89"><span class="toc-number">8.4.</span> <span class="toc-text">模块整体加载（import as语句）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#export-default%E8%AF%AD%E5%8F%A5"><span class="toc-number">8.5.</span> <span class="toc-text">export default语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5default-export"><span class="toc-number">8.6.</span> <span class="toc-text">引入default export</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-number">9.</span> <span class="toc-text">Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise%E5%90%AB%E4%B9%89"><span class="toc-number">9.1.</span> <span class="toc-text">Promise含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">9.2.</span> <span class="toc-text">Promise基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#then%E6%96%B9%E6%B3%95"><span class="toc-number">9.2.1.</span> <span class="toc-text">then方法</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&text=ES6常用特性总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&is_video=false&description=ES6常用特性总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6常用特性总结&body=Check out this article: http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&name=ES6常用特性总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/07/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&t=ES6常用特性总结"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    HaloQuanty
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
