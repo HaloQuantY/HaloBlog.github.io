@@ -1,5 +1,5 @@
 ---
-  title: Bootstrap笔记(freeCodeCamp)
+title: Bootstrap笔记(freeCodeCamp)
 ---
 ### 内容
 
