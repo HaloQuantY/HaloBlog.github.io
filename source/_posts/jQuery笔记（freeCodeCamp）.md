@@ -1,5 +1,5 @@
 ---
-  title: jQuery笔记（freeCodeCamp）
+title: jQuery笔记（freeCodeCamp）
 ---
 
 - $(doucment).ready(function() { })：保证function内部的代码在HTML渲染完成后运行
