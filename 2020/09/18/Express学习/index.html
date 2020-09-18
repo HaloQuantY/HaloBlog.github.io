@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hello World1234567const express &#x3D; require(&amp;#x27;express&amp;#x27;)const app &#x3D; express()const port &#x3D; 3000app.get(&amp;#x27;&#x2F;&amp;#x27;, (req, res) &#x3D;&gt; res.send(&amp;#x27;Hello World!&amp;#x27;))app.listen(port, () &#x3D;&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express框架学习">
+<meta property="og:url" content="http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="HaloQuant">
+<meta property="og:description" content="Hello World1234567const express &#x3D; require(&amp;#x27;express&amp;#x27;)const app &#x3D; express()const port &#x3D; 3000app.get(&amp;#x27;&#x2F;&amp;#x27;, (req, res) &#x3D;&gt; res.send(&amp;#x27;Hello World!&amp;#x27;))app.listen(port, () &#x3D;&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-18T18:25:55.104Z">
+<meta property="article:modified_time" content="2020-09-18T18:25:55.104Z">
+<meta property="article:author" content="HaloQuanty">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Express框架学习</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/18/Node.js%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&text=Express框架学习"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&is_video=false&description=Express框架学习"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Express框架学习&body=Check out this article: http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&name=Express框架学习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&t=Express框架学习"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Express-generator"><span class="toc-number">2.</span> <span class="toc-text">Express-generator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">基本使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%B7%AF%E7%94%B1"><span class="toc-number">3.</span> <span class="toc-text">基础路由</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%B7%AF%E5%BE%84"><span class="toc-number">3.1.</span> <span class="toc-text">路由路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">路由处理函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#app-route"><span class="toc-number">3.2.1.</span> <span class="toc-text">app.route()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.1.</span> <span class="toc-text">开发中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8"><span class="toc-number">5.1.1.</span> <span class="toc-text">中间件函数作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8app-use-%E6%96%B9%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.1.2.</span> <span class="toc-text">直接使用app.use()方法加载中间件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.2.</span> <span class="toc-text">使用中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%BA%A7%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.2.1.</span> <span class="toc-text">应用级中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%BA%A7%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.2.2.</span> <span class="toc-text">路由级中间件</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Express框架学习
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">HaloQuant</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-18T18:25:55.104Z" itemprop="datePublished">2020-09-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> res.send(<span class="string">&#x27;Hello World!&#x27;</span>))</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Example app listening on port <span class="subst">$&#123;port&#125;</span>!`</span>))</span><br></pre></td></tr></table></figure>
+
+<p>​    其中，app.get函数设置了响应访问该服务器端口时的响应。当url为根目录时将返回一个“Hello World”字符串；</p>
+<h3 id="Express-generator"><a href="#Express-generator" class="headerlink" title="Express-generator"></a>Express-generator</h3><p>​    应用生成工具，用于快速搭建app骨架。</p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装express-generator包</span></span><br><span class="line">$ npm install -g express-generator</span><br><span class="line">$ express</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在当前目录下myapp文件夹创建app</span></span><br><span class="line">$ express --view=pug myapp</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下载依赖</span></span><br><span class="line">$ cd myapp</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="基础路由"><a href="#基础路由" class="headerlink" title="基础路由"></a>基础路由</h3><p>​    路由决定app如何根据URL和HTTP请求方法（GET，POST等），响应客户端请求。每个路由都有一个或多个处理函数，用于在路由匹配时的响应。也可以使用app.all()处理所有HTTP请求方法，并用app.use()来指定中间件作为回调函数。</p>
+<p>​    通常路由定义遵循以下结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.METHOD(PATH, HANDLER);</span><br></pre></td></tr></table></figure>
+
+<p>​    其中，METHOD是HTTP请求方法类型（GET，POST），以小写表示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;Hello World!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;Got a POST request&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​    这些路由方法定义了一个回调函数，当app接收指向特定路径的请求时进行调用。也就是说app监视匹配路由的请求并调用定义回调函数。</p>
+<p>​    当路由方法拥有多个回调函数作为参数时，需要在回调函数中定义一个<code>next</code>函数并在回调函数体中调用<code>next()</code>控制下一个回调。</p>
+<h4 id="路由路径"><a href="#路由路径" class="headerlink" title="路由路径"></a>路由路径</h4><p>​    路由路径和请求方法结合，定义了请求能够达到的端点。路由路径可以是字符串，正则表达式。如果路径中需要使用<code>$</code>，需要将它包裹成<code>[\$]</code>形式，如<code>/data/([\$])book</code>。</p>
+<h4 id="路由处理函数"><a href="#路由处理函数" class="headerlink" title="路由处理函数"></a>路由处理函数</h4><p>​    可以定义多个回调函数，类似中间件一样处理请求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cb0 = <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;CB0&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cb1 = <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;CB1&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cb2 = <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;Hello from C!&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/example/c&#x27;</span>, [cb0, cb1, cb2])</span><br></pre></td></tr></table></figure>
+
+<h5 id="app-route"><a href="#app-route" class="headerlink" title="app.route()"></a>app.route()</h5><p>​    为一个路径创建链式处理函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app.route(<span class="string">&#x27;/book&#x27;</span>)</span><br><span class="line">  .get(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">&#x27;Get a random book&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  .post(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">&#x27;Add a book&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  .put(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">&#x27;Update the book&#x27;</span>)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a>静态文件</h3><p>​    静态文件是如CSS，图片和JS脚本之类文件，需要使用<code>express.static</code>内置中间件函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express.static(root, [options])</span><br></pre></td></tr></table></figure>
+
+<p>​    利用app.use()方法将静态文件夹下文件对外访问</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>​    访问的URL中只会出现文件名而没有路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;images&#x2F;kitten.jpg</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;css&#x2F;style.css</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;js&#x2F;app.js</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;images&#x2F;bg.png</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;hello.html</span><br></pre></td></tr></table></figure>
+
+<p>​    创建虚拟路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">&#x27;/static&#x27;</span>, express.static(<span class="string">&#x27;public&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>​    访问虚拟路径下的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;static&#x2F;images&#x2F;kitten.jpg</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;static&#x2F;css&#x2F;style.css</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;static&#x2F;js&#x2F;app.js</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;static&#x2F;images&#x2F;bg.png</span><br><span class="line">http:&#x2F;&#x2F;localhost:3000&#x2F;static&#x2F;hello.html</span><br></pre></td></tr></table></figure>
+
+<p>​    创建绝对路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">&#x27;/static&#x27;</span>, express.static(path.join(__dirname, <span class="string">&#x27;public&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><h4 id="开发中间件"><a href="#开发中间件" class="headerlink" title="开发中间件"></a>开发中间件</h4><p>​    中间件函数是可以访问app请求-响应循环中request对象（req），response对象（res）和next函数的函数。在路由中，当前中间件函数执行完毕后会调用next函数来执行下一个中间件函数。</p>
+<h5 id="中间件函数作用"><a href="#中间件函数作用" class="headerlink" title="中间件函数作用"></a>中间件函数作用</h5><ul>
+<li><p>执行任意代码</p>
+</li>
+<li><p>改变request和response对象</p>
+</li>
+<li><p>结束请求-响应循环</p>
+</li>
+<li><p>调用栈中下一个中间件函数</p>
+<p>如果当前中间件函数没有结束请求-响应循环，那么它必然调用next函数传递下一个中间件，否则请求将会被挂起。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中间件就是接收请求后的回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">middleware</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">	res.send(<span class="string">&quot;middleware&quot;</span>);</span><br><span class="line">	next();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&quot;/&quot;</span>, middleware);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8000</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="直接使用app-use-方法加载中间件"><a href="#直接使用app-use-方法加载中间件" class="headerlink" title="直接使用app.use()方法加载中间件"></a>直接使用app.use()方法加载中间件</h5><p>​    app.use()可以加载和定义中间件，并且每次有请求时都会调用中间件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myLogger = <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;LOGGED&#x27;</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.use(myLogger)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;Hello World!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    但是如果把下面get路由和上放myLogger中间件调换顺序，则myLogger不会执行，因为get路由的中间件终止了请求-响应循环。调换顺序后只有在get中间件内调用next函数才会执行myLogger中间件。</p>
+<h4 id="使用中间件"><a href="#使用中间件" class="headerlink" title="使用中间件"></a>使用中间件</h4><p>​    Express是基于路由和中间件的web开发框架，而最基本的单元就是中间件，Express开发应用是由一系列中间件函数调用组成的。</p>
+<p>​    Express应用可以使用以下种类中间件：</p>
+<ul>
+<li><p>应用级中间件</p>
+</li>
+<li><p>路由级中间件</p>
+</li>
+<li><p>错误处理中间件</p>
+</li>
+<li><p>内置中间件</p>
+</li>
+<li><p>第三方中间件</p>
+<p>应用级和路由级中间件可以被加载到某一个路径，当对某路径加载多个中间件函数时会创建一个该路径下的中间件系统子栈。</p>
+</li>
+</ul>
+<h5 id="应用级中间件"><a href="#应用级中间件" class="headerlink" title="应用级中间件"></a>应用级中间件</h5><p>​    应用级中间件使用<code>app.use()</code>和<code>app.METHOD()</code>进行绑定，当中间件函数没有绑定到路径时，每次端口接收到请求都会执行中间件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/user/:id&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// if the user ID is 0, skip to the next route</span></span><br><span class="line">  <span class="keyword">if</span> (req.params.id === <span class="string">&#x27;0&#x27;</span>) next(<span class="string">&#x27;route&#x27;</span>)</span><br><span class="line">  <span class="comment">// otherwise pass the control to the next middleware function in this stack</span></span><br><span class="line">  <span class="keyword">else</span> next()</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// send a regular response</span></span><br><span class="line">  res.send(<span class="string">&#x27;regular&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// handler for the /user/:id path, which sends a special response</span></span><br><span class="line">app.get(<span class="string">&#x27;/user/:id&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;special&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​    可以在next中传入“route”跳过当前路径中间件子栈，将控制权交给下一个路由（仅对METHOD绑定中间件有效）</p>
+<h5 id="路由级中间件"><a href="#路由级中间件" class="headerlink" title="路由级中间件"></a>路由级中间件</h5><p>​    路由级中间件和应用级中间件原理类似，只是需要绑定给一个express.Router()实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line"><span class="comment">// a middleware function with no mount path. This code is executed for every request to the router</span></span><br><span class="line">router.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Time:&#x27;</span>, <span class="built_in">Date</span>.now())</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path</span></span><br><span class="line">router.use(<span class="string">&#x27;/user/:id&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Request URL:&#x27;</span>, req.originalUrl)</span><br><span class="line">  next()</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Request Type:&#x27;</span>, req.method)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// a middleware sub-stack that handles GET requests to the /user/:id path</span></span><br><span class="line">router.get(<span class="string">&#x27;/user/:id&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// if the user ID is 0, skip to the next router</span></span><br><span class="line">  <span class="keyword">if</span> (req.params.id === <span class="string">&#x27;0&#x27;</span>) next(<span class="string">&#x27;route&#x27;</span>)</span><br><span class="line">  <span class="comment">// otherwise pass control to the next middleware function in this stack</span></span><br><span class="line">  <span class="keyword">else</span> next()</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// render a regular page</span></span><br><span class="line">  res.render(<span class="string">&#x27;regular&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// handler for the /user/:id path, which renders a special page</span></span><br><span class="line">router.get(<span class="string">&#x27;/user/:id&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.params.id)</span><br><span class="line">  res.render(<span class="string">&#x27;special&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// mount the router on the app</span></span><br><span class="line">app.use(<span class="string">&#x27;/&#x27;</span>, router)</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Express-generator"><span class="toc-number">2.</span> <span class="toc-text">Express-generator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">基本使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%B7%AF%E7%94%B1"><span class="toc-number">3.</span> <span class="toc-text">基础路由</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%B7%AF%E5%BE%84"><span class="toc-number">3.1.</span> <span class="toc-text">路由路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">路由处理函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#app-route"><span class="toc-number">3.2.1.</span> <span class="toc-text">app.route()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.1.</span> <span class="toc-text">开发中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8"><span class="toc-number">5.1.1.</span> <span class="toc-text">中间件函数作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8app-use-%E6%96%B9%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.1.2.</span> <span class="toc-text">直接使用app.use()方法加载中间件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.2.</span> <span class="toc-text">使用中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%BA%A7%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.2.1.</span> <span class="toc-text">应用级中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%BA%A7%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.2.2.</span> <span class="toc-text">路由级中间件</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&text=Express框架学习"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&is_video=false&description=Express框架学习"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Express框架学习&body=Check out this article: http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&title=Express框架学习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&name=Express框架学习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/18/Express%E5%AD%A6%E4%B9%A0/&t=Express框架学习"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    HaloQuanty
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

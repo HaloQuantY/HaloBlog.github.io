@@ -9,12 +9,12 @@
     <meta name="description" content="DOM1级 DOM扩展  DOM1级node类型​    所有DOM节点都是node类型，可以使用以下属性和方法 属性：  nodeType：节点类型，返回数值  nodeName：标签名  nodeValue：根据不同节点类型，属性值不同  childNodes：子元素，返回一个nodeList对象（类数组）  parentNode：父元素  previousSibling：前兄弟元素  ne">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOM总结">
-<meta property="og:url" content="http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="HaloQuant">
 <meta property="og:description" content="DOM1级 DOM扩展  DOM1级node类型​    所有DOM节点都是node类型，可以使用以下属性和方法 属性：  nodeType：节点类型，返回数值  nodeName：标签名  nodeValue：根据不同节点类型，属性值不同  childNodes：子元素，返回一个nodeList对象（类数组）  parentNode：父元素  previousSibling：前兄弟元素  ne">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-16T08:50:33.721Z">
-<meta property="article:modified_time" content="2020-09-16T08:50:33.721Z">
+<meta property="article:published_time" content="2020-09-18T18:25:55.104Z">
+<meta property="article:modified_time" content="2020-09-18T18:25:55.104Z">
 <meta property="article:author" content="HaloQuanty">
 <meta name="twitter:card" content="summary">
     
@@ -76,10 +76,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2020/09/16/CSS%E5%B8%83%E5%B1%80%E5%92%8C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/09/18/CSS%E5%B8%83%E5%B1%80%E5%92%8C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2020/09/16/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -92,17 +92,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=DOM总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=DOM总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=DOM总结&body=Check out this article: http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=DOM总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=DOM总结"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=DOM总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=DOM总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DOM总结&body=Check out this article: http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=DOM总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=DOM总结"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -131,7 +131,7 @@
       
     <div class="postdate">
       
-        <time datetime="2020-09-16T08:50:33.721Z" itemprop="datePublished">2020-09-16</time>
+        <time datetime="2020-09-18T18:25:55.104Z" itemprop="datePublished">2020-09-18</time>
         
       
     </div>
@@ -267,17 +267,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=DOM总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=DOM总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=DOM总结&body=Check out this article: http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=DOM总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/16/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=DOM总结"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=DOM总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=DOM总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DOM总结&body=Check out this article: http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=DOM总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=DOM总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=DOM总结"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
