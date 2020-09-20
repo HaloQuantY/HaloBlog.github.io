@@ -9,12 +9,12 @@
     <meta name="description" content="let和const命令基本用法​    let声明变量，const声明常量。 特性 块级作用域。声明变量&#x2F;常量仅在声明语句所在代码块内生效 没有变量提升。 暂时性死区。只要一代码块中有let或const声明的变量，虽然没有变量提升的特性，但从一开始let和const声明的变量就被所处代码块锁死，在声明前使用这些变量会报错。  12345678var tmp &#x3D; 123;if (true) &amp;#12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6常用特性总结">
-<meta property="og:url" content="http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="HaloQuant">
 <meta property="og:description" content="let和const命令基本用法​    let声明变量，const声明常量。 特性 块级作用域。声明变量&#x2F;常量仅在声明语句所在代码块内生效 没有变量提升。 暂时性死区。只要一代码块中有let或const声明的变量，虽然没有变量提升的特性，但从一开始let和const声明的变量就被所处代码块锁死，在声明前使用这些变量会报错。  12345678var tmp &#x3D; 123;if (true) &amp;#12">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-18T18:25:55.104Z">
-<meta property="article:modified_time" content="2020-09-18T18:25:55.104Z">
+<meta property="article:published_time" content="2020-09-20T17:44:02.725Z">
+<meta property="article:modified_time" content="2020-09-20T17:44:02.725Z">
 <meta property="article:author" content="HaloQuanty">
 <meta name="twitter:card" content="summary">
     
@@ -76,10 +76,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2020/09/18/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/09/20/DOM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2020/09/18/Express%E5%AD%A6%E4%B9%A0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/09/20/Express%E5%AD%A6%E4%B9%A0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -92,17 +92,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&text=ES6常用特性总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&is_video=false&description=ES6常用特性总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=ES6常用特性总结&body=Check out this article: http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&name=ES6常用特性总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&t=ES6常用特性总结"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&text=ES6常用特性总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&is_video=false&description=ES6常用特性总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6常用特性总结&body=Check out this article: http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&name=ES6常用特性总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&t=ES6常用特性总结"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -131,7 +131,7 @@
       
     <div class="postdate">
       
-        <time datetime="2020-09-18T18:25:55.104Z" itemprop="datePublished">2020-09-18</time>
+        <time datetime="2020-09-20T17:44:02.725Z" itemprop="datePublished">2020-09-20</time>
         
       
     </div>
@@ -350,17 +350,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&text=ES6常用特性总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&is_video=false&description=ES6常用特性总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=ES6常用特性总结&body=Check out this article: http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&name=ES6常用特性总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/18/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&t=ES6常用特性总结"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&text=ES6常用特性总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&is_video=false&description=ES6常用特性总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6常用特性总结&body=Check out this article: http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&title=ES6常用特性总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&name=ES6常用特性总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/20/ES6%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/&t=ES6常用特性总结"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
