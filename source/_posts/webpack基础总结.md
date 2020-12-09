@@ -396,4 +396,74 @@ module.exports = {
 
 ##### js语法检查
 
-​	
+​	Js文件的语法检查常用eslint工具，webpack使用时需要加载`eslint`和`eslint-loader`
+
+```javascript
+module.exports = {
+  module: {
+      rules: [
+          {
+              test: /\.js$/,
+              // 设置规则排除node_modules文件夹下所有文件
+              exclude: /node_modules/,
+              loader: "eslint-loader",
+              options: {
+                  // 自动修复error
+                  fix: true
+              }
+          }
+      ]
+  }  
+};
+```
+
+​	eslint还需要在package.json中设置代码规则，一般使用airbnb规则。要将airbnb规则在eslint中应用需要在npm中下载`eslint-config-airbnb-base`(不包含react插件)和`eslint-plugin-import`作为依赖。
+
+```javascript
+// package.json
+
+"eslintConfig": {
+    "extends": "aribnb-base"
+}
+```
+
+##### js兼容性处理
+
+​	js文件的兼容性处理使用babel工具，加载`babel-loader`，`babel/core`和`@babel/preset-env`作为依赖。
+
+```javascript
+module.exports = {
+  module: {
+      rules: [
+          {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              loader: "babel-loader",
+              options: {
+                  presets: [
+                      [
+                          "@babel/preset-env",
+                          {
+                              useBuiltIns: "usage",
+                              corejs: {
+                                  version: 3
+                              },
+                              targets: {
+                                  chrome: "60",
+                                  firefox: "60",
+                                  safari: "10",
+                                  ie: "9",
+                                  edge: "17"
+                              }
+                          }
+                      ]
+                  ]
+              }
+          }
+      ]
+  }  
+};
+```
+
+
+
