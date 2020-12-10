@@ -438,32 +438,54 @@ module.exports = {
           {
               test: /\.js$/,
               exclude: /node_modules/,
-              loader: "babel-loader",
-              options: {
-                  presets: [
-                      [
-                          "@babel/preset-env",
-                          {
-                              useBuiltIns: "usage",
-                              corejs: {
-                                  version: 3
-                              },
-                              targets: {
-                                  chrome: "60",
-                                  firefox: "60",
-                                  safari: "10",
-                                  ie: "9",
-                                  edge: "17"
-                              }
-                          }
-                      ]
-                  ]
-              }
+              loader: "babel-loader"
           }
       ]
   }  
 };
 ```
+
+​	然后在项目根目录下创建`.babelrc`文件，并在其中写入设置
+
+```javascript
+// .babelrc
+
+{
+    "presets": [
+        [
+        	"@babel/preset-env"    
+        ]
+    ]
+}
+```
+
+​	进行以上设置就可以对ES6语法进行兼容转换，但要实现API兼容如promise等功能还需要使用`@babel/runtime`插件进行转换。
+
+​	下载`@babel/runtime`,`@babel/plugin-transform-runtime`和`@babel/runtime-corejs3`进行API转换。`@babel/runtime`插件是Babel提供的polyfill插件
+
+https://awdr74100.github.io/2020-03-16-webpack-babelloader/
+
+```javascript
+// .babelrc
+
+{
+    "presets": [
+        [
+            "@babel/preset-env"
+        ]
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "corejs": 3
+            }
+        ]
+    ]
+}
+```
+
+
 
 
 
