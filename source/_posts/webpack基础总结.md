@@ -487,5 +487,333 @@ https://awdr74100.github.io/2020-03-16-webpack-babelloader/
 
 
 
+### webpack性能优化
 
+- 开发环境性能优化
+  - 优化打包构建速度
+  - 优化代码调试速度
+- 生产环境性能优化
+  - 优化打包构建速度
+  - 优化代码性能
+
+#### 开发环境性能优化
+
+##### 模块热替换HMR（Hot Module Replacement）
+
+​	HMR允许模块发生变化时仅打包该变化模块而不是全部模块重新打包。
+
+- 样式文件：style-loader内置HMR功能，无需设置
+- js文件：默认没有HMR功能
+- HTML文件：默认同样没有HMR功能（但SPA应用不需要HMR功能，只需要在entry中加入html文件入口即可）
+
+```javascript
+// webpack.config.js
+const path = require('path');
+
+module.exports = {
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        compress: true,
+        open: true,
+        // 添加该项开启HMR功能
+        hot: true
+    }
+}
+```
+
+​	实现js模块的HMR功能
+
+```javascript
+// index.js
+
+// 一旦module.hot为true，说明开启了HMR功能
+if (module.hot) {
+    // 监听print.js变化，一旦发生变化其他模块将不会重新打包构建并执行回调函数
+    module.hot.accept('./print.js', () => {
+        print();
+    }) ;
+}
+```
+
+##### source-map
+
+​	`[inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map`
+
+##### oneOf
+
+​	解决webpack设置中每个文件都需要匹配rules中所有loader问题，将不重复的loader写到oneOf中优化构建速度：
+
+```javascript
+// webpack.config.js
+
+module.exports = {
+    module: {
+        rules: [
+            {
+                // 对于重复的匹配项，需要将其单独写在oneOf外
+                test: /\.js$/,
+                exclude: /node_modules/,
+                // 优先执行
+                enforce: 'pre',
+                loader: 'eslint-loader',
+                options: {
+                    fix: true
+                }
+            },
+            {
+                // 在oneOf中的loader，文件只会匹配其中一项
+                oneOf: [
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        loader: 'babel-loader'
+                    },
+                    {
+                        test: /\.css$/,
+                        use: [
+                            'style-loader',
+                            'css-loader'
+                        ]
+                    },
+                    {
+                        test: /\.less$/,
+                        use: [
+                            'style-loader',
+                            'css-loader',
+                            'less-loader'
+                        ]
+                    },
+                    {
+                        test: /\.(jpg|png|gif|svg)$/,
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8 * 1024,
+                            esModule: false
+                        }
+                    },
+                    {
+                        test: /\.html$/,
+                        loader: 'html-loader'
+                    },
+                    {
+                        exclude: /\.(html|js|css|less|jpg|png|gif|svg)$/,
+                        loader: 'file-loader'
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+##### 缓存
+
+- 对babel缓存
+  - 让第二次以后打包构建速度更快
+  - 在.babelrc中添加`cacheDirectory: true`
+- 对整体资源缓存
+  - 让代码上线运行缓存更加好使用
+  - 对于出口文件(output和插件)添加哈希值
+  - [hash:10]每次webpack构建都会生成，但js和css文件hash值相同，不能使用
+  - [chunkhash:10] js和css同属一个chunk，不能使用
+  - [contenthash:10] 根据文件内容生成hash值，不同文件hash值一定不同，推荐使用
+
+##### tree-shaking
+
+​	用于去掉项目中无用代码，有一定前提条件
+
+- 使用esModule
+
+- 开启production环境
+
+  满足以上两个条件webpack会自动实现tree-shaking，但是需要注意不同版本webpack的tree-shaking功能可能将css等代码也去除，因此需要在package.json中配置sideEffects选项
+
+```javascript
+// package.json
+
+{
+    "sideEffects": ["*.css", "*.less"] // 表示不对css,less文件进行tree-shaking
+}
+```
+
+##### code-split
+
+​	将js文件分成多个文件，使用时按需引用。实现code-split有多种方式
+
+- 多入口
+
+  ```javascript
+  // webpack.config.js
+  cosnt path = require('path');
+  
+  module.exports = {
+    entry: {
+        name1: './src/js/name1.js',
+        name2: './src/js/name2.js'
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist');
+        filename: '[name].[contenthash:10].js'
+    }
+  };
+  // 多入口对应多页面应用，缺点是书写繁琐
+  ```
+
+- optimization选项
+
+  ```javascript
+  // webpack.config.js
+  
+  module.exports = {
+    optimization: {
+        splitChunks: {
+       	 // 将所有chunk进行分离打包
+        	chunks: 'all'    
+        }
+    }  
+  };
+  // 用于将node_modules中代码单独打包成一个chunk
+  // 同时也会将多入口文件中引用的公共文件打包成一个chunk
+  ```
+
+- import动态导入语法：在入口js文件中使用动态导入的模块都自动打包为一个单独chunk
+
+  - 最常用的一种方案，添加了optimization选项让node_modules代码单独打包成chunk，同时在加载js模块时使用import动态导入语法保证导入js文件也打包为单独chunk
+  - `import(\* webpackChunkName: 'name' *\'path').then(({ imported }) => {})`,其中的魔术注释会配合optimization进行chunk打包
+
+##### 懒加载和预加载
+
+- 懒加载
+  - 在回调函数中使用动态加载语法`import('path').then(({ importFun }) => {})`即完成懒加载
+- 预加载
+  - 在懒加载的魔术注释中加上`/* webpackChunkName: 'name', webpackPrefetch: true */`即开启了预加载
+  - 预加载和正常加载不同，会在其他js文件都加载完毕后再发出请求，保存在浏览器缓存中，然后在被调用时才正式加载，不会堵塞进程
+  - 兼容性差，慎用
+
+##### PWA
+
+​	渐进式网络开发应用，可以让网页应用通过缓存离线使用。
+
+##### 多线程打包
+
+​	调用多线程进行打包，需要下载`thread-loader`，一般用于babel。
+
+```javascript
+// webpack.config.js
+
+module.exports = {
+  module: {
+      rules: [
+          {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              use: [
+                  'thread-loader',
+                  'babel-loader'
+              ]
+          }
+      ]
+  }  
+};
+```
+
+​	但是多线程打包的进程启动时间约为600ms，进程通信也有开销，只有大型项目才能得到加速打包效果。
+
+​	可以传入options选项选择使用进程数：
+
+```javascript
+// webpack.config.js
+
+module.exports = {
+  module: {
+      rules: [
+          {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              use: [
+                  {
+                      loader: 'thread-loader',
+                      options: {
+                          workers: 2 // 进程数为2
+                      }
+                  },
+                  'babel-loader'
+              ]
+          }
+      ]
+  }  
+};
+```
+
+##### externals
+
+​	用于忽略打包一些库（可能使用cdn引入等）。在配置文件中加入externals选项写入忽略库即可。
+
+```javascript
+// webpack.config.js
+
+module.exports = {
+  externals: {
+      // 忽略库名 -- npm包名
+      jquery: 'jquery'
+  }  
+};
+```
+
+##### dll
+
+​	dll技术可以对一些库进行单独打包，需要创建webpack.dll.js。
+
+```javascript
+// webpack.dll.js
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+    entry: {
+        // 最终打包生成name为jquery
+        // ['jquery']打包的库名称
+        jquery: ['jquery']
+    },
+    ourput: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dll'),
+        library: '[name]_[hash]' // 打包的库向外暴露名称
+    },
+    plugins: [
+        new webpack.DllPlugin({
+            // 打包生成一个manifest.json，提供jquery映射
+            name: '[name]_[hash]',
+            path: path.resolve(__dirnmae, 'dll/manifest.json')
+        })
+    ],
+    mode: 'production'
+};
+```
+
+​	运行时使用`webpack --config webpack.dll.js`指令可以完成对库的打包。
+
+```javascript
+// webpack.config.js
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+      // 指定哪些库不参与打包，同时使用时的名称也改变
+      new webpack.DllReferencePlugin({
+          manifest: path.resolve(__dirname, 'dll/manifest.json')
+      }),
+      // 将某个文件打包输出，并在html中自动引入该资源
+      new AddAssetsHtmlWebpackPlugin({
+          filepath: path.resovle(__dirname, 'dll/jquery.js')
+      })
+  ]  
+};
+// 需要下载add-assets-html-webpack-plugin插件
+```
+
+
+
+​	
 
